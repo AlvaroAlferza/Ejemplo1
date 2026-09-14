@@ -21,13 +21,24 @@ export default function Gallery() {
   return (
     <section
       id="galeria"
-      className="relative overflow-hidden bg-[#F3F0E7] px-6 py-20 lg:px-10 lg:py-24"
+      className="relative overflow-hidden px-6 py-20 lg:px-10 lg:py-24"
     >
+      {/* ================= FONDO ================= */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[center_55%] bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/fondo.jpg')",
+        }}
+      />
+
+      {/* CAPA SUAVE */}
+      <div className="pointer-events-none absolute inset-0 bg-[#F3F0E7]/55" />
+
       {/* DETALLE DECORATIVO */}
       <div className="pointer-events-none absolute right-[-10%] top-[10%] h-[420px] w-[420px] rounded-full bg-[#657653]/[0.06] blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
         <motion.div
           initial={{
             opacity: 0,
@@ -83,7 +94,7 @@ export default function Gallery() {
           </p>
         </motion.div>
 
-        {/* GALERÍA */}
+        {/* ================= GALERÍA ================= */}
         <div className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-3 md:items-start">
           {videos.map((video, index) => (
             <motion.figure
@@ -151,7 +162,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* DETALLE INFERIOR */}
+        {/* ================= DETALLE INFERIOR ================= */}
         <motion.div
           initial={{
             opacity: 0,

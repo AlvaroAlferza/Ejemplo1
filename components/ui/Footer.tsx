@@ -24,27 +24,33 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-black/[0.08] bg-[#F3F0E7] px-6 pt-12 lg:px-10 lg:pt-14">
       {/* IMAGEN DE FONDO */}
-<div
-  className="pointer-events-none absolute inset-0 bg-cover bg-[center_75%] bg-no-repeat opacity-100"
-  style={{
-    backgroundImage: "url('/images/fondo.jpg')",
-  }}
-/>
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[center_75%] bg-no-repeat opacity-100"
+        style={{
+          backgroundImage: "url('/images/fondo.jpg')",
+        }}
+      />
 
-{/* CAPA SUAVE PARA LEGIBILIDAD */}
-<div className="pointer-events-none absolute inset-0 bg-[#F3F0E7]/25" />
+      {/* CAPA SUAVE PARA LEGIBILIDAD */}
+      <div className="pointer-events-none absolute inset-0 bg-[#F3F0E7]/25" />
 
       {/* CONTENIDO */}
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* GRID PRINCIPAL */}
         <div className="grid gap-10 border-b border-black/[0.10] pb-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-12">
+          
           {/* MARCA */}
           <div>
             <a
               href="#"
-              className="inline-block text-xl font-semibold tracking-[-0.045em]"
+              className="inline-flex items-center"
+              aria-label={site.name}
             >
-              {site.name}
+              <img
+                src="/images/logo1.png"
+                alt={site.name}
+                className="h-12 w-auto object-contain sm:h-14"
+              />
             </a>
 
             <p className="mt-3 max-w-xs text-sm leading-6 text-black/50">
@@ -131,6 +137,7 @@ export default function Footer() {
               className="group mt-4 inline-flex items-center gap-2 text-sm font-semibold"
             >
               Contáctanos
+
               <ArrowUpRight
                 size={15}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

@@ -3,23 +3,29 @@
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { products } from "@/data/products";
-import FarmFieldBackground from "@/components/ui/FarmFieldBackground";
 
 export default function Products() {
   return (
     <section
       id="productos"
-      className="relative overflow-hidden bg-[#F3F0E7] px-6 py-24 lg:px-10 lg:py-32"
+      className="relative overflow-hidden px-6 py-20 lg:px-10 lg:py-24"
     >
       {/* =====================================================
-          FONDO ANIMADO
+          FONDO
       ====================================================== */}
 
-      <FarmFieldBackground />
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[center_55%] bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/fondo.jpg')",
+        }}
+      />
 
-      {/* =====================================================
-          CONTENIDO
-      ====================================================== */}
+      {/* CAPA SUAVE */}
+      <div className="pointer-events-none absolute inset-0 bg-[#F3F0E7]/55" />
+
+      {/* GLOW DECORATIVO */}
+      <div className="pointer-events-none absolute left-[-10%] top-[15%] h-[420px] w-[420px] rounded-full bg-[#657653]/[0.07] blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* =================================================
@@ -29,7 +35,7 @@ export default function Products() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 25,
           }}
           whileInView={{
             opacity: 1,
@@ -103,13 +109,13 @@ export default function Products() {
             PRODUCTOS
         ================================================== */}
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
           {products.map((product, index) => (
             <motion.article
               key={product.id}
               initial={{
                 opacity: 0,
-                y: 45,
+                y: 40,
                 scale: 0.97,
               }}
               whileInView={{
@@ -127,7 +133,7 @@ export default function Products() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               whileHover={{
-                y: -10,
+                y: -8,
               }}
               className="
                 group
@@ -159,7 +165,7 @@ export default function Products() {
                   "
                 />
 
-                {/* Overlay */}
+                {/* OVERLAY */}
 
                 <div
                   className="
@@ -176,7 +182,7 @@ export default function Products() {
                   "
                 />
 
-                {/* Número */}
+                {/* NUMERO */}
 
                 <div
                   className="
@@ -251,6 +257,26 @@ export default function Products() {
             </motion.article>
           ))}
         </div>
+
+        {/* DETALLE INFERIOR */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            scaleX: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            scaleX: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.3,
+          }}
+          className="mx-auto mt-14 h-px max-w-5xl origin-center bg-gradient-to-r from-transparent via-black/10 to-transparent"
+        />
       </div>
     </section>
   );

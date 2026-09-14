@@ -29,9 +29,30 @@ export default function Quality() {
   return (
     <section
       id="calidad"
-      className="bg-[#F3F0E7] px-6 py-24 lg:px-10 lg:py-32"
+      className="relative overflow-hidden px-6 py-20 lg:px-10 lg:py-24"
     >
-      <div className="mx-auto max-w-7xl">
+      {/* =====================================================
+          FONDO
+      ====================================================== */}
+
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[center_55%] bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/fondo.jpg')",
+        }}
+      />
+
+      {/* CAPA SUAVE */}
+      <div className="pointer-events-none absolute inset-0 bg-[#F3F0E7]/55" />
+
+      {/* DETALLE DECORATIVO */}
+      <div className="pointer-events-none absolute left-[-10%] top-[10%] h-[400px] w-[400px] rounded-full bg-[#657653]/[0.06] blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* =================================================
+            ENCABEZADO
+        ================================================== */}
+
         <motion.div
           initial={{
             opacity: 0,
@@ -43,32 +64,77 @@ export default function Quality() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="mx-auto max-w-3xl text-center"
         >
+          {/* LABEL */}
+
           <div className="mb-5 flex items-center justify-center gap-3">
-            <span className="h-px w-7 bg-[#657653]" />
+            <motion.span
+              initial={{
+                width: 0,
+              }}
+              whileInView={{
+                width: 28,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="h-px bg-[#657653]"
+            />
 
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#657653]">
               Calidad
             </p>
 
-            <span className="h-px w-7 bg-[#657653]" />
+            <motion.span
+              initial={{
+                width: 0,
+              }}
+              whileInView={{
+                width: 28,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="h-px bg-[#657653]"
+            />
           </div>
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.05em] sm:text-5xl">
+          {/* TITULO */}
+
+          <h2 className="text-4xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-5xl lg:text-6xl">
             Hecho con cuidado.
             <br />
-            Entregado con confianza.
+            <span className="text-black/35">
+              Entregado con confianza.
+            </span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-black/50">
+          {/* DESCRIPCIÓN */}
+
+          <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-black/50">
             Una forma sencilla y cercana de llevar productos de nuestra granja
             hasta tu mesa.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {/* =================================================
+            CUALIDADES
+        ================================================== */}
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
           {qualities.map((item, index) => {
             const Icon = item.icon;
 
@@ -77,38 +143,100 @@ export default function Quality() {
                 key={item.title}
                 initial={{
                   opacity: 0,
-                  y: 30,
+                  y: 35,
+                  scale: 0.97,
                 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
+                  scale: 1,
                 }}
                 viewport={{
                   once: true,
+                  amount: 0.2,
                 }}
                 transition={{
-                  delay: index * 0.1,
+                  delay: index * 0.12,
+                  duration: 0.75,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{
-                  y: -5,
+                  y: -7,
                 }}
-                className="rounded-[28px] border border-black/[0.08] bg-white/45 p-7"
+                className="
+                  group
+                  rounded-[28px]
+                  border
+                  border-black/[0.08]
+                  bg-[#F3F0E7]/75
+                  p-7
+                  shadow-[0_25px_70px_rgba(23,24,20,0.07)]
+                  backdrop-blur-md
+                  transition-colors
+                  duration-500
+                  hover:bg-[#F3F0E7]/90
+                "
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#263B24] text-[#D9BD68]">
-                  <Icon size={20} strokeWidth={1.7} />
-                </div>
+                {/* ICONO */}
+
+                <motion.div
+                  whileHover={{
+                    scale: 1.08,
+                    rotate: 3,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 250,
+                    damping: 15,
+                  }}
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-[#263B24] text-[#D9BD68]"
+                >
+                  <Icon
+                    size={20}
+                    strokeWidth={1.7}
+                  />
+                </motion.div>
+
+                {/* TITULO */}
 
                 <h3 className="mt-7 text-xl font-semibold tracking-[-0.025em]">
                   {item.title}
                 </h3>
 
+                {/* TEXTO */}
+
                 <p className="mt-3 text-sm leading-6 text-black/50">
                   {item.text}
                 </p>
+
+                {/* LINEA DECORATIVA */}
+
+                <div className="mt-6 h-px w-8 bg-[#657653]/40 transition-all duration-500 group-hover:w-14" />
               </motion.div>
             );
           })}
         </div>
+
+        {/* DETALLE INFERIOR */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scaleX: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            scaleX: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.3,
+          }}
+          className="mx-auto mt-14 h-px max-w-5xl origin-center bg-gradient-to-r from-transparent via-black/10 to-transparent"
+        />
       </div>
     </section>
   );
