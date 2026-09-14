@@ -10,9 +10,9 @@ export const site = {
 
   location: "Arequipa, Perú",
 
-  whatsapp: "51999999999",
+  whatsapp: "51958032002",
 
-  email: "contacto@granja.pe",
+  email: "alvaro.durand@ucsp.edu.pe",
 
   instagram: "#",
 };

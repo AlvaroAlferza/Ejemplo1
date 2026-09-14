@@ -25,9 +25,22 @@ export default function Process() {
   return (
     <section
       id="proceso"
-      className="border-y border-black/[0.08] bg-[#E7E2D5] px-6 py-24 lg:px-10 lg:py-28"
+      className="relative overflow-hidden border-y border-black/[0.08] px-6 py-24 lg:px-10 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl">
+      {/* IMAGEN DE FONDO */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[center_35%] bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/fondo.jpg')",
+        }}
+      />
+
+      {/* CAPA SUAVE */}
+      <div className="pointer-events-none absolute inset-0 bg-[#E7E2D5]/45" />
+
+      {/* CONTENIDO */}
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* HEADER */}
         <motion.div
           initial={{
             opacity: 0,
@@ -39,62 +52,91 @@ export default function Process() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="mx-auto max-w-3xl text-center"
         >
           <div className="mb-5 flex items-center justify-center gap-3">
-            <span className="h-px w-7 bg-[#657653]" />
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 28 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="h-px bg-[#657653]"
+            />
 
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#657653]">
               Así trabajamos
             </p>
 
-            <span className="h-px w-7 bg-[#657653]" />
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 28 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="h-px bg-[#657653]"
+            />
           </div>
 
-          <h2 className="text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-            Simple, cercano y transparente.
+          <h2 className="text-4xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-5xl lg:text-6xl">
+            Simple, cercano
+            <span className="text-black/35"> y transparente.</span>
           </h2>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {/* PASOS */}
+        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
               initial={{
                 opacity: 0,
-                x: 25,
+                y: 30,
               }}
               whileInView={{
                 opacity: 1,
-                x: 0,
+                y: 0,
               }}
               viewport={{
                 once: true,
+                amount: 0.2,
               }}
               transition={{
-                delay: index * 0.1,
+                delay: index * 0.12,
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative"
+              whileHover={{
+                y: -5,
+              }}
+              className="group relative rounded-[24px] border border-black/[0.08] bg-[#F3F0E7]/55 p-7 backdrop-blur-sm transition-colors duration-500 hover:bg-[#F3F0E7]/75"
             >
-              <p className="text-xs font-medium tracking-[0.2em] text-black/30">
-                {step.number}
-              </p>
+              {/* NUMERO */}
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold tracking-[0.2em] text-[#657653]">
+                  {step.number}
+                </p>
 
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.035em]">
+                {index < steps.length - 1 && (
+                  <ArrowRight
+                    size={17}
+                    className="text-black/20 transition-transform duration-300 group-hover:translate-x-1 md:block"
+                  />
+                )}
+              </div>
+
+              {/* CONTENIDO */}
+              <h3 className="mt-8 text-2xl font-semibold tracking-[-0.035em]">
                 {step.title}
               </h3>
 
               <p className="mt-3 max-w-sm text-sm leading-6 text-black/50">
                 {step.text}
               </p>
-
-              {index < steps.length - 1 && (
-                <ArrowRight
-                  size={18}
-                  className="absolute right-0 top-1 hidden text-black/20 md:block"
-                />
-              )}
             </motion.div>
           ))}
         </div>

@@ -22,6 +22,10 @@ export default function Products() {
       ====================================================== */}
 
       <div className="relative z-10 mx-auto max-w-7xl">
+        {/* =================================================
+            ENCABEZADO
+        ================================================== */}
+
         <motion.div
           initial={{
             opacity: 0,
@@ -39,9 +43,11 @@ export default function Products() {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="max-w-3xl"
+          className="mx-auto max-w-3xl text-center"
         >
-          <div className="mb-5 flex items-center gap-3">
+          {/* LABEL */}
+
+          <div className="mb-5 flex items-center justify-center gap-3">
             <motion.span
               initial={{
                 width: 0,
@@ -61,13 +67,33 @@ export default function Products() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#657653]">
               Productos
             </p>
+
+            <motion.span
+              initial={{
+                width: 0,
+              }}
+              whileInView={{
+                width: 28,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="h-px bg-[#657653]"
+            />
           </div>
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.05em] sm:text-5xl">
+          {/* TITULO */}
+
+          <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.05em] sm:text-5xl">
             Lo esencial de nuestra granja.
           </h2>
 
-          <p className="mt-5 max-w-2xl text-[17px] leading-7 text-black/50">
+          {/* DESCRIPCIÓN */}
+
+          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-black/50">
             Productos seleccionados con cuidado para llevar lo mejor de nuestra
             granja directamente a tu mesa.
           </p>
@@ -114,7 +140,10 @@ export default function Products() {
                 backdrop-blur-md
               "
             >
-              {/* Imagen */}
+              {/* =================================================
+                  IMAGEN
+              ================================================== */}
+
               <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
                 <img
                   src={product.image}
@@ -130,7 +159,8 @@ export default function Products() {
                   "
                 />
 
-                {/* Overlay hover */}
+                {/* Overlay */}
+
                 <div
                   className="
                     absolute
@@ -147,6 +177,7 @@ export default function Products() {
                 />
 
                 {/* Número */}
+
                 <div
                   className="
                     absolute
@@ -175,7 +206,10 @@ export default function Products() {
                 </div>
               </div>
 
-              {/* Contenido */}
+              {/* =================================================
+                  CONTENIDO
+              ================================================== */}
+
               <div className="p-6 lg:p-7">
                 <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-black/35">
                   {product.category}

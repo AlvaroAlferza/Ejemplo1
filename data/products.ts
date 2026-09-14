@@ -15,7 +15,7 @@ export const products: Product[] = [
     description:
       "Huevos seleccionados para el consumo diario, preparados con cuidado desde nuestra granja.",
     unit: "Bandejas",
-    image: "/images/huevos.jpg",
+    image: "/images/pavo1.jpg",
   },
 
   {
@@ -25,7 +25,7 @@ export const products: Product[] = [
     description:
       "Cuyes criados con dedicación y una alimentación cuidada.",
     unit: "Unidades",
-    image: "/images/cuyes.jpg",
+    image: "/images/cuy1.jpg",
   },
 
   {
@@ -35,6 +35,6 @@ export const products: Product[] = [
     description:
       "Gallinas de nuestra granja disponibles según temporada y disponibilidad.",
     unit: "Unidades",
-    image: "/images/gallinas.jpg",
+    image: "/images/pollo1.jpg",
   },
 ];
