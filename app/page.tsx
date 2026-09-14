@@ -1,12 +1,12 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Products from "@/components/Products";
-import About from "@/components/About";
-import Quality from "@/components/Quality";
-import Process from "@/components/Process";
-import Gallery from "@/components/Gallery";
-import ContactCTA from "@/components/ContactCTA";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/ui/Navbar";
+import Hero from "@/components/ui/Hero";
+import Products from "@/components/ui/Products";
+import About from "@/components/ui/About";
+import Quality from "@/components/ui/Quality";
+import Process from "@/components/ui/Process";
+import Gallery from "@/components/ui/Gallery";
+import ContactCTA from "@/components/ui/ContactCTA";
+import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
